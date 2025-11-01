@@ -51,7 +51,7 @@ Todo con una interfaz limpia, actualizaciones automáticas y soporte para múlti
 
 ## 📬 Contacto
 
-📧 Desarrollado por **BSZNET**  
+📧 Desarrollado por **AvastrOficial**  
 🌐 Sitio web oficial: [https://bsznet.vercel.app](https://bsznet.vercel.app)
 
 ---
