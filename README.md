@@ -1,2 +1,2 @@
 # TV-BOX-BSZ
-Web organiza ips para validar en tiempo real carga estado de television con cable de forma gratuita 
+Web organiza ips para validar en tiempo real carga estado de television en vivo de forma gratuita IpTv
