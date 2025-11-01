@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV BOX BSZ - La Revolución del Entretenimiento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de colores y estilos */
+        :root {
+            --primary: #000000;
+            --secondary: #1a1a1a;
+            --accent: #ffffff;
+            --neon-blue: #00f3ff;
+            --neon-purple: #b300ff;
+            --neon-pink: #ff00c8;
+            --neon-green: #00ff88;
+            --gray-light: #333333;
+            --gray-medium: #666666;
+            --shadow: rgba(0, 243, 255, 0.3);
+        }
+
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--accent);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Efectos de fondo espacial */
+        .space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, #0a0e2a 0%, #000000 70%);
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ddd, transparent),
+                radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: stars-animation 60s linear infinite;
+        }
+
+        @keyframes stars-animation {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100px); }
+        }
+
+        /* Header y navegación */
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-light);
+            box-shadow: 0 0 15px var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--neon-blue);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--neon-blue);
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+            color: var(--neon-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .forum-button {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 0 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .forum-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        /* Sección Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--neon-blue);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px var(--neon-blue); }
+            to { text-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray-medium);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--neon-blue);
+            border-radius: 30px;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            background-color: var(--neon-blue);
+            color: var(--primary);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .cta-button.forum {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .cta-button.forum:hover {
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+            box-shadow: 0 0 25px var(--neon-purple);
+        }
+
+        /* Animación de canales */
+        .channels-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        .channel {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            background: var(--secondary);
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--neon-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 0.8rem;
+            animation: float 20s infinite linear;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .channel:hover {
+            transform: scale(1.1);
+            z-index: 2;
+            opacity: 1;
+        }
+
+        .channel:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .channel:nth-child(2) {
+            top: 60%;
+            left: 15%;
+            animation-delay: -5s;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .channel:nth-child(3) {
+            top: 40%;
+            left: 80%;
+            animation-delay: -10s;
+            box-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .channel:nth-child(4) {
+            top: 80%;
+            left: 70%;
+            animation-delay: -15s;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .channel:nth-child(5) {
+            top: 30%;
+            left: 50%;
+            animation-delay: -7s;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .channel:nth-child(6) {
+            top: 70%;
+            left: 30%;
+            animation-delay: -12s;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(10px) translateX(-10px) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-15px) translateX(15px) rotate(3deg);
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+        }
+
+        /* Sección de características */
+        .features {
+            padding: 100px 5%;
+            background-color: rgba(26, 26, 26, 0.7);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--secondary);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--neon-blue);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .feature-card p {
+            color: var(--gray-medium);
+        }
+
+        /* Sección de dispositivos */
+        .devices {
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .devices-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .device {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+        }
+
+        .device-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .device:hover .device-inner {
+            transform: rotateY(180deg);
+        }
+
+        .device-front, .device-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .device-front {
+            background-color: var(--secondary);
+            border: 1px solid var(--gray-light);
+        }
+
+        .device-back {
+            background-color: var(--primary);
+            transform: rotateY(180deg);
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 20px var(--shadow);
+        }
+
+        .device-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--neon-blue);
+        }
+
+        .device h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Sección del foro */
+        .forum-section {
+            padding: 100px 5%;
+            background-color: rgba(26, 26, 26, 0.7);
+            text-align: center;
+        }
+
+        .forum-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .forum-content p {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+        }
+
+        .forum-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .stat {
+            margin: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--shadow);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray-medium);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            padding: 50px 5% 20px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--neon-blue);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--gray-medium);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--neon-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--gray-light);
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--neon-blue);
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-light);
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+
+        /* Botón flotante del foro */
+        .floating-forum {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: var(--primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-forum:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--neon-blue);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 243, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cta-button {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo espacial -->
+    <div class="space-background">
+        <div class="stars"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-satellite-dish logo-icon"></i>
+                TV <span>BOX</span> BSZ
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#dispositivos">Dispositivos</a></li>
+                    <li><a href="#foro">Informacion</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="https://tvboxbsz.foroactivo.com/" class="forum-button" target="_blank">Ir Web</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Hero -->
+    <section class="hero" id="inicio">
+        <div class="channels-animation">
+            <div class="channel">Canal Deportes</div>
+            <div class="channel">Cine Internacional</div>
+            <div class="channel">Noticias 24/7</div>
+            <div class="channel">Series Premium</div>
+            <div class="channel">Música Global</div>
+            <div class="channel">TV BOX BSZ</div>
+        </div>
+        <div class="hero-content">
+            <h1>TV BOX BSZ</h1>
+            <p>La revolución del entretenimiento en tu hogar. Accede a miles de canales internacionales, contenido bajo demanda y aplicaciones en un solo dispositivo.</p>
+            <div class="cta-buttons">
+                <a href="#caracteristicas" class="cta-button">Descubre Más</a>
+                <a href="https://tvboxbsz.foroactivo.com/" class="cta-button forum" target="_blank">Ir al Foro Oficial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Características -->
+    <section class="features" id="caracteristicas">
+        <h2 class="section-title">Características Principales</h2>
+        <div class="features-grid">
+            
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Compatibilidad Multiplataforma</h3>
+                <p>Funciona en televisores, smartphones, tablets y ordenadores. Tu entretenimiento te sigue a todas partes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Alta Velocidad</h3>
+                <p>Procesador de última generación para una experiencia fluida sin interrupciones ni buffering.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Seguridad Garantizada</h3>
+                <p>Disfruta de contenido protegido con los más altos estándares de seguridad y privacidad.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                <h3>Actualizaciones Constantes</h3>
+                <p>Recibe actualizaciones automáticas con nuevo contenido y mejoras de rendimiento regularmente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Dispositivos -->
+    <section class="devices" id="dispositivos">
+        <h2 class="section-title">Compatibilidad Total</h2>
+        <div class="devices-container">
+            <div class="device">
+                <div class="device-inner">
+                    <div class="device-front">
+                        <div class="device-icon"><i class="fas fa-tv"></i></div>
+                        <h3>Televisión</h3>
+                        <p>Experiencia cinematográfica</p>
+                    </div>
+                    <div class="device-back">
+                        <h3>TV BOX BSZ</h3>
+                        <p>Conecta directamente a tu televisor para disfrutar del mejor contenido en alta definición.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="device">
+                <div class="device-inner">
+                    <div class="device-front">
+                        <div class="device-icon"><i class="fas fa-laptop"></i></div>
+                        <h3>PC</h3>
+                        <p>Versatilidad total</p>
+                    </div>
+                    <div class="device-back">
+                        <h3>TV BOX BSZ</h3>
+                        <p>Accede desde tu ordenador con nuestra aplicación optimizada para Windows y Mac.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="device">
+                <div class="device-inner">
+                    <div class="device-front">
+                        <div class="device-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Móvil</h3>
+                        <p>Entretenimiento en movimiento</p>
+                    </div>
+                    <div class="device-back">
+                        <h3>TV BOX BSZ</h3>
+                        <p>Lleva tu contenido favorito contigo con nuestra app para iOS y Android.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del Foro -->
+    <section class="forum-section" id="foro">
+        <h2 class="section-title">Foro Oficial TV BOX BSZ</h2>
+        <div class="forum-content">
+            <p>Únete a nuestra comunidad en el foro oficial de TV BOX BSZ. Comparte experiencias, resuelve dudas, descubre nuevos contenidos y mantente actualizado con las últimas novedades.</p>
+            
+            <div class="forum-stats">
+                <div class="stat">
+                    <div class="stat-number">5K+</div>
+                    <div class="stat-label">Usuarios Activos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">20K+</div>
+                    <div class="stat-label">Temas Discutidos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Mensajes</div>
+                </div>
+            </div>
+            
+            <a href="https://tvboxbsz.foroactivo.com/" class="cta-button forum" target="_blank">Acceder A La Web</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TV BOX BSZ</h3>
+                <p>Accede a contenido global desde cualquier dispositivo.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-signal"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#dispositivos">Dispositivos</a></li>
+                    <li><a href="#foro">web</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Soporte</h3>
+                <ul>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Contactar Soporte</a></li>
+                    <li><a href="#">Estado del Servicio</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Términos de Servicio</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 TV BOX BSZ. Todos los derechos reservados. | <a href="https://tvboxbsz.foroactivo.com/" style="color: var(--neon-blue);" target="_blank">Web Oficial</a></p>
+        </div>
+    </footer>
+
+    <!-- Botón flotante del foro -->
+    <a href="https://tvboxbsz.foroactivo.com/" class="floating-forum" target="_blank">
+        <i class="fas fa-users"></i>
+    </a>
+
+    <script>
+        // Efecto de escritura para el título principal
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+            
+            // Efecto de parallax para las estrellas
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const stars = document.querySelector('.stars');
+                stars.style.transform = `translateY(${scrolled * 0.5}px)`;
+            });
+
+            // Efecto de aparición suave al hacer scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Aplicar a las secciones
+            document.querySelectorAll('.features, .devices, .forum-section').forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
